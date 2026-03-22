@@ -1,0 +1,19 @@
+distortions = []
+K = range(1, 10)
+for k in K:
+    kmeanModel = KMeans(n_clusters=k, n_init=10, random_state=42)
+    kmeanModel.fit(df[['price']])
+    distortions.append(kmeanModel.inertia_)
+
+
+plt.figure(figsize=(10, 5))
+plt.plot(K, distortions, 'bx-')
+plt.xlabel('Number of Teams (k)')
+plt.ylabel('Inertia')
+plt.title('The Elbow Method: Optimal Team Count')
+plt.show()
+
+
+kmeans = KMeans(n_clusters=3, n_init=10, random_state=42)
+df['Sales_Team'] = kmeans.fit_predict(df[['price']])
+print("Success: Houses segmented into 3 specialized sales teams.")
