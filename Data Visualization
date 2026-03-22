@@ -1,0 +1,4 @@
+plt.figure(figsize=(12, 8))
+sns.heatmap(df.corr(), annot=True, cmap='RdYlGn', fmt='.2f')
+plt.title("Correlation Heatmap: Identifying Price Drivers")
+plt.show()
